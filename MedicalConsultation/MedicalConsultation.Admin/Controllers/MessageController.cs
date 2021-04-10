@@ -6,40 +6,23 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using MedicalConsultation.Models;
+using MedicalConsultation.Repos.Interfaces;
 
 namespace MedicalConsultation.Admin.Controllers
 {
     public class MessageController : Controller
     {
-        private readonly MedConsAdminContext _context;
+        private readonly IMessageRepo messageRepo;
 
-        public MessageController(MedConsAdminContext context)
+        public MessageController(IMessageRepo messageRepo)
         {
-            _context = context;
+            this.messageRepo = messageRepo;
         }
 
         // GET: Message
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Message.ToListAsync());
-        }
-
-        // GET: Message/Details/5
-        public async Task<IActionResult> Details(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var message = await _context.Message
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (message == null)
-            {
-                return NotFound();
-            }
-
-            return View(message);
+            return View(await messageRepo.GetAllAsync());
         }
 
         // GET: Message/Create
@@ -57,8 +40,7 @@ namespace MedicalConsultation.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
-                _context.Add(message);
-                await _context.SaveChangesAsync();
+                await messageRepo.CreateAsync(message);
                 return RedirectToAction(nameof(Index));
             }
             return View(message);
@@ -72,7 +54,7 @@ namespace MedicalConsultation.Admin.Controllers
                 return NotFound();
             }
 
-            var message = await _context.Message.FindAsync(id);
+            var message = await messageRepo.GetAsync(id);
             if (message == null)
             {
                 return NotFound();
@@ -96,8 +78,7 @@ namespace MedicalConsultation.Admin.Controllers
             {
                 try
                 {
-                    _context.Update(message);
-                    await _context.SaveChangesAsync();
+                    await messageRepo.UpdateAsync(message);
                 }
                 catch (DbUpdateConcurrencyException)
                 {
@@ -123,8 +104,8 @@ namespace MedicalConsultation.Admin.Controllers
                 return NotFound();
             }
 
-            var message = await _context.Message
-                .FirstOrDefaultAsync(m => m.Id == id);
+            var message = await messageRepo.GetAsync(id);
+
             if (message == null)
             {
                 return NotFound();
@@ -138,15 +119,13 @@ namespace MedicalConsultation.Admin.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var message = await _context.Message.FindAsync(id);
-            _context.Message.Remove(message);
-            await _context.SaveChangesAsync();
+            await messageRepo.DeleteAsync(id);
             return RedirectToAction(nameof(Index));
         }
 
         private bool MessageExists(int id)
         {
-            return _context.Message.Any(e => e.Id == id);
+            return messageRepo.GetAsync(id) != null;
         }
     }
 }
