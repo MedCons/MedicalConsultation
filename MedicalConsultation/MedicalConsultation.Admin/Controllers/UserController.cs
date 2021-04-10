@@ -1,49 +1,30 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.EntityFrameworkCore;
 using MedicalConsultation.Models;
+using MedicalConsultation.Repos.Interfaces;
+using Microsoft.EntityFrameworkCore;
 
 namespace MedicalConsultation.Admin.Controllers
 {
     public class UserController : Controller
     {
-        private readonly MedConsAdminContext _context;
+        private readonly IUserRepo userRepo;
 
-        public UserController(MedConsAdminContext context)
+        public UserController(IUserRepo userRepo)
         {
-            _context = context;
+            this.userRepo = userRepo;
         }
 
         // GET: User
         public async Task<IActionResult> Index()
         {
-            return View(await _context.User.ToListAsync());
-        }
-
-        // GET: User/Details/5
-        public async Task<IActionResult> Details(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var user = await _context.User
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (user == null)
-            {
-                return NotFound();
-            }
-
-            return View(user);
+            return View(await userRepo.GetAllAsync());
         }
 
         // GET: User/Create
-        public IActionResult Create()
+        public IActionResult Registration()
         {
             return View();
         }
@@ -53,12 +34,11 @@ namespace MedicalConsultation.Admin.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Name,Surname,Age,Email,Password,Role")] User user)
+        public async Task<IActionResult> Registration([Bind("Id,Name,Surname,Age,Email,Password,Role")] User user)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(user);
-                await _context.SaveChangesAsync();
+                await userRepo.CreateAsync(user);
                 return RedirectToAction(nameof(Index));
             }
             return View(user);
@@ -72,7 +52,7 @@ namespace MedicalConsultation.Admin.Controllers
                 return NotFound();
             }
 
-            var user = await _context.User.FindAsync(id);
+            var user = await userRepo.GetAsync(id);
             if (user == null)
             {
                 return NotFound();
@@ -96,8 +76,7 @@ namespace MedicalConsultation.Admin.Controllers
             {
                 try
                 {
-                    _context.Update(user);
-                    await _context.SaveChangesAsync();
+                    await userRepo.UpdateAsync(user);
                 }
                 catch (DbUpdateConcurrencyException)
                 {
@@ -123,8 +102,7 @@ namespace MedicalConsultation.Admin.Controllers
                 return NotFound();
             }
 
-            var user = await _context.User
-                .FirstOrDefaultAsync(m => m.Id == id);
+            var user = await userRepo.GetAsync(id);
             if (user == null)
             {
                 return NotFound();
@@ -138,15 +116,13 @@ namespace MedicalConsultation.Admin.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var user = await _context.User.FindAsync(id);
-            _context.User.Remove(user);
-            await _context.SaveChangesAsync();
+            await userRepo.DeleteAsync(id);
             return RedirectToAction(nameof(Index));
         }
 
         private bool UserExists(int id)
         {
-            return _context.User.Any(e => e.Id == id);
+            return userRepo.GetAsync(id) != null;
         }
     }
 }
