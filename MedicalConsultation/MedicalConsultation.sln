@@ -3,7 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31019.35
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MedicalConsultation", "MedicalConsultation\MedicalConsultation.csproj", "{B73F30C7-3D1E-463F-B7A1-B365FB68804C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MedicalConsultation", "MedicalConsultation\MedicalConsultation.csproj", "{B73F30C7-3D1E-463F-B7A1-B365FB68804C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MedicalConsultation.Admin", "MedicalConsultation.Admin\MedicalConsultation.Admin.csproj", "{FD359FE8-E55E-4E67-8281-724FDA90AB78}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MedicalConsultation.Models", "MedicalConsultation.Models\MedicalConsultation.Models.csproj", "{A82F37BA-85D7-4909-9A2D-CC72ADBBABC6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +19,14 @@ Global
 		{B73F30C7-3D1E-463F-B7A1-B365FB68804C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B73F30C7-3D1E-463F-B7A1-B365FB68804C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B73F30C7-3D1E-463F-B7A1-B365FB68804C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FD359FE8-E55E-4E67-8281-724FDA90AB78}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FD359FE8-E55E-4E67-8281-724FDA90AB78}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FD359FE8-E55E-4E67-8281-724FDA90AB78}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FD359FE8-E55E-4E67-8281-724FDA90AB78}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A82F37BA-85D7-4909-9A2D-CC72ADBBABC6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A82F37BA-85D7-4909-9A2D-CC72ADBBABC6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A82F37BA-85D7-4909-9A2D-CC72ADBBABC6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A82F37BA-85D7-4909-9A2D-CC72ADBBABC6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

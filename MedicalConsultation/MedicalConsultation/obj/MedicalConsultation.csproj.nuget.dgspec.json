@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Hrant\\source\\repos\\MedicalConsultation\\MedicalConsultation\\MedicalConsultation.csproj": {}
+    "C:\\Users\\Hrant\\source\\repos\\MedicalConsultation\\MedicalConsultation\\MedicalConsultation\\MedicalConsultation.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Hrant\\source\\repos\\MedicalConsultation\\MedicalConsultation\\MedicalConsultation.csproj": {
+    "C:\\Users\\Hrant\\source\\repos\\MedicalConsultation\\MedicalConsultation\\MedicalConsultation\\MedicalConsultation.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Hrant\\source\\repos\\MedicalConsultation\\MedicalConsultation\\MedicalConsultation.csproj",
+        "projectUniqueName": "C:\\Users\\Hrant\\source\\repos\\MedicalConsultation\\MedicalConsultation\\MedicalConsultation\\MedicalConsultation.csproj",
         "projectName": "MedicalConsultation",
-        "projectPath": "C:\\Users\\Hrant\\source\\repos\\MedicalConsultation\\MedicalConsultation\\MedicalConsultation.csproj",
+        "projectPath": "C:\\Users\\Hrant\\source\\repos\\MedicalConsultation\\MedicalConsultation\\MedicalConsultation\\MedicalConsultation.csproj",
         "packagesPath": "C:\\Users\\Hrant\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Hrant\\source\\repos\\MedicalConsultation\\MedicalConsultation\\obj\\",
+        "outputPath": "C:\\Users\\Hrant\\source\\repos\\MedicalConsultation\\MedicalConsultation\\MedicalConsultation\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Hrant\\AppData\\Roaming\\NuGet\\NuGet.Config",
