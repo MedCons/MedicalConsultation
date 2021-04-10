@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MedicalConsultation.Admin",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MedicalConsultation.Models", "MedicalConsultation.Models\MedicalConsultation.Models.csproj", "{A82F37BA-85D7-4909-9A2D-CC72ADBBABC6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MedicalConsultation.Repos", "MedicalConsultation.Repos\MedicalConsultation.Repos.csproj", "{77E8C5EF-8C17-483B-8C12-22555853277C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{A82F37BA-85D7-4909-9A2D-CC72ADBBABC6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A82F37BA-85D7-4909-9A2D-CC72ADBBABC6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A82F37BA-85D7-4909-9A2D-CC72ADBBABC6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{77E8C5EF-8C17-483B-8C12-22555853277C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{77E8C5EF-8C17-483B-8C12-22555853277C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{77E8C5EF-8C17-483B-8C12-22555853277C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{77E8C5EF-8C17-483B-8C12-22555853277C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
