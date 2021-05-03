@@ -32,14 +32,15 @@ namespace MedicalConsultation.Admin.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Registration([Bind("Id,Name,Surname,Age,Email,Password,Role")] User user)
+        public async Task<IActionResult> Registration([Bind("Id,Name,Surname,Age,Email,Password,Role")] Register register)
         {
             if (ModelState.IsValid)
             {
-                await userRepo.CreateAsync(user);
-                return RedirectToAction(nameof(Index));
+                User user = new User { Email = register.Email, Name = register.Email,  Age = register.Age };
+                // добавляем пользователя
+                var result = await userRepo.CreateAsync(user);
             }
-            return View(user);
+            return View(register); ;
         }
 
         // GET: User/Edit/5
