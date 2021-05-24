@@ -12,7 +12,5 @@ using MedicalConsultation.Models;
         {
         }
 
-        public DbSet<User> User { get; set; }
-
         public DbSet<Message> Message { get; set; }
     }
