@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace MedicalConsultation.Models
+namespace MedicalConsultation.Areas.Identity.Data
 {
     public enum Role
     {
