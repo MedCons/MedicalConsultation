@@ -10,23 +10,17 @@
 <body>
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">MedicalConsultation</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
-                    </ul>
-                </div>
+            <div class="wrapper">
+
+                <ul class="menu-ul">
+                    <li class="menu-li"><a asp-area="" asp-controller="Home" asp-action="Index" class="nav-link menu-a" style="color: white; font-size: 21px;">Home</a></li>
+                    <li class="menu-li"><a asp-area="" asp-controller="Home" asp-action="Index" class="nav-link menu-a">About</a></li>
+                    <li class="menu-li"><a href="medroom.html" class="menu-a">MEDroom</a></li>
+                    <li class="menu-li"><a href="medcontact.html" class="menu-a">Contact</a></li>
+                </ul>
+
             </div>
+            <a asp-page="./Areas/Identity/Pages/Account/Register" class="spam-a"><spam class="as">Registration</spam></a>        
         </nav>
     </header>
     <div class="container">
@@ -37,7 +31,34 @@
 
     <footer class="border-top footer text-muted">
         <div class="container">
-            &copy; 2021 - MedicalConsultation - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            <table class="footer-table">
+                <tr>
+                    <th class="th">Contact</th>
+                    <!-- <th class="th">Account</th> -->
+                    <th class="th">Company</th>
+                    <th class="th"></th>
+                </tr>
+                <tr>
+                    <td class="td"><a href="https://facebook.com" target="_blank" class="footer-a">Facebook</a></td>
+                    <!-- <td class="td"><a href="" class="footer-a">Login</a></td> ste chmoranas stexces logini hamar sayty -->
+                    <td class="td"><a href="" class="footer-a">About</a></td>
+                </tr>
+                <tr>
+                    <td class="td"><a href="https://instagram.com" target="_blank" class="footer-a">Instagram</a></td>
+                    <!-- <td class="td"><a href="" class="footer-a">Sign-Up</a></td> --><!-- ste chmoranas stexces logini hamar sayty nuynna inch vor vervi loginy nuyn hrefna linelu-->
+                    <td class="td"></td>
+                </tr>
+                <tr>
+                    <td class="td"><a href="https://gmail.com" target="_blank" class="footer-a">Gmail</a></td>
+                    <td class="td"></td>
+                    <td class="td"></td>
+                </tr>
+                <tr>
+                    <td class="td"><a href="https://twitter.com" target="_blank" class="footer-a">Twitter</a></td>
+                    <td class="td"></td>
+                    <td class="td"></td>
+                </tr>
+            </table>
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
