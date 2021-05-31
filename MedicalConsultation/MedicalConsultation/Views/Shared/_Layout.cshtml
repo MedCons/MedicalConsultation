@@ -6,6 +6,32 @@
     <title>@ViewData["Title"] - MedicalConsultation</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="~/css/medstyle.css" />
+
+    <style>
+        .footer {
+            clear: both;
+            position: relative;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            background-color: #007cb0;
+        }
+
+        .td {
+            padding-left: 20px;
+            padding-right: 50px;
+        }
+
+        .th {
+            padding-left: 20px;
+            padding-bottom: 20px;
+            font-family: arial;
+            padding-right: 100px;
+            color: #1f1f1f;
+            font-size: 25px;
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -20,7 +46,7 @@
                 </ul>
 
             </div>
-            <a asp-page="./Areas/Identity/Pages/Account/Register" class="spam-a"><spam class="as">Registration</spam></a>        
+            <a asp-area="Identity" asp-page="/Account/Register" class="spam-a"><spam class="as">Registration</spam></a>
         </nav>
     </header>
     <div class="container">
@@ -29,41 +55,66 @@
         </main>
     </div>
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            <table class="footer-table">
-                <tr>
-                    <th class="th">Contact</th>
-                    <!-- <th class="th">Account</th> -->
-                    <th class="th">Company</th>
-                    <th class="th"></th>
-                </tr>
-                <tr>
-                    <td class="td"><a href="https://facebook.com" target="_blank" class="footer-a">Facebook</a></td>
-                    <!-- <td class="td"><a href="" class="footer-a">Login</a></td> ste chmoranas stexces logini hamar sayty -->
-                    <td class="td"><a href="" class="footer-a">About</a></td>
-                </tr>
-                <tr>
-                    <td class="td"><a href="https://instagram.com" target="_blank" class="footer-a">Instagram</a></td>
-                    <!-- <td class="td"><a href="" class="footer-a">Sign-Up</a></td> --><!-- ste chmoranas stexces logini hamar sayty nuynna inch vor vervi loginy nuyn hrefna linelu-->
-                    <td class="td"></td>
-                </tr>
-                <tr>
-                    <td class="td"><a href="https://gmail.com" target="_blank" class="footer-a">Gmail</a></td>
-                    <td class="td"></td>
-                    <td class="td"></td>
-                </tr>
-                <tr>
-                    <td class="td"><a href="https://twitter.com" target="_blank" class="footer-a">Twitter</a></td>
-                    <td class="td"></td>
-                    <td class="td"></td>
-                </tr>
-            </table>
-        </div>
-    </footer>
+    <!--<footer class="border-top footer text-muted">
+        <table class="footer-table">
+            <tr>
+                <th class="th">Contact</th>-->
+    <!-- <th class="th">Account</th> -->
+    <!--<th class="th">Company</th>
+        <th class="th"></th>
+    </tr>
+    <tr>
+        <td class="td"><a href="https://facebook.com" target="_blank" class="footer-a">Facebook</a></td>-->
+    <!-- <td class="td"><a href="" class="footer-a">Login</a></td> ste chmoranas stexces logini hamar sayty -->
+    <!--<td class="td"><a href="" class="footer-a">About</a></td>
+    </tr>
+    <tr>
+        <td class="td"><a href="https://instagram.com" target="_blank" class="footer-a">Instagram</a></td>-->
+    <!-- <td class="td"><a href="" class="footer-a">Sign-Up</a></td> --><!-- ste chmoranas stexces logini hamar sayty nuynna inch vor vervi loginy nuyn hrefna linelu-->
+    <!--<td class="td"></td>
+            </tr>
+            <tr>
+                <td class="td"><a href="https://gmail.com" target="_blank" class="footer-a">Gmail</a></td>
+                <td class="td"></td>
+                <td class="td"></td>
+            </tr>
+            <tr>
+                <td class="td"><a href="https://twitter.com" target="_blank" class="footer-a">Twitter</a></td>
+                <td class="td"></td>
+                <td class="td"></td>
+            </tr>
+        </table>
+    </footer>-->
+    <!-- Footer -->
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     @RenderSection("Scripts", required: false)
+
+    <footer class="footer">
+        <table class="footer-table">
+            <tr style="padding: 10px;">
+                <th class="th">Contact</th>
+                <th class="th">Account</th>
+                <th class="th">Company</th>
+            </tr>
+            <tr>
+                <td class="td"><a href="https://facebook.com" target="_blank" class="footer-a">Facebook</a></td>
+                <td class="td"><a asp-area="Identity" asp-page="/Account/Login" class="footer-a">Login</a></td> @*ste chmoranas stexces logini hamar sayty*@
+                <td class="td"><a href="" class="footer-a">About</a></td>
+            </tr>
+            <tr>
+                <td class="td"><a href="https://instagram.com" target="_blank" class="footer-a">Instagram</a></td>
+                <td class="td"><a asp-area="Identity" asp-page="/Account/Register" class="footer-a">Sign-Up</a></td>  @*ste chmoranas stexces logini hamar sayty nuynna inch vor vervi loginy nuyn hrefna linelu*@
+            </tr>
+            <tr>
+                <td class="td"><a href="https://gmail.com" target="_blank" class="footer-a">Gmail</a></td>
+            </tr>
+            <tr>
+                <td class="td"><a href="https://twitter.com" target="_blank" class="footer-a">Twitter</a></td>
+
+            </tr>
+        </table>
+    </footer>
 </body>
 </html>
