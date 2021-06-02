@@ -42,7 +42,7 @@
                 <ul class="menu-ul">
                     <li class="menu-li"><a asp-area="" asp-controller="Home" asp-action="Index" class="nav-link menu-a" style="color: white; font-size: 21px;">Home</a></li>
                     <li class="menu-li"><a asp-area="" asp-controller="Home" asp-action="Index" class="nav-link menu-a">About</a></li>
-                    <li class="menu-li"><a href="medroom.html" class="nav-link menu-a">MedRoom</a></li>
+                    <li class="menu-li"><a asp-controller="Message" asp-action="Create" class="nav-link menu-a">MedRoom</a></li>
                     <li class="menu-li"><a href="medcontact.html" class="nav-link menu-a">Contact</a></li>
                     @if (UserState.Role == 1)
                     {

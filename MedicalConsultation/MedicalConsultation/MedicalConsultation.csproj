@@ -22,4 +22,8 @@
     <None Include="wwwroot\img\med4.jpg" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\MedicalConsultation.Admin\MedicalConsultation.Admin.csproj" />
+  </ItemGroup>
+
 </Project>
