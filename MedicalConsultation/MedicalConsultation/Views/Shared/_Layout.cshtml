@@ -42,13 +42,17 @@
                 <ul class="menu-ul">
                     <li class="menu-li"><a asp-area="" asp-controller="Home" asp-action="Index" class="nav-link menu-a" style="color: white; font-size: 21px;">Home</a></li>
                     <li class="menu-li"><a asp-area="" asp-controller="Home" asp-action="Index" class="nav-link menu-a">About</a></li>
-                    <li class="menu-li"><a href="medroom.html" class="nav-link menu-a">MEDroom</a></li>
+                    <li class="menu-li"><a href="medroom.html" class="nav-link menu-a">MedRoom</a></li>
                     <li class="menu-li"><a href="medcontact.html" class="nav-link menu-a">Contact</a></li>
+                    @if (UserState.Role == 1)
+                    {
+                        <li class="menu-li"><a href="medcontact.html" class="nav-link menu-a">Messages</a></li>
+                    }
                 </ul>
 
             </div>
 
-            @if (!User.Identity.IsAuthenticated)
+            @if (!UserState.IsLoggedIn)
             {
                 <a asp-area="Identity" asp-page="/Account/Register" class="spam-a" style="margin-bottom: 15px;"><spam class="as">Registration</spam></a>
                 <a asp-area="Identity" asp-page="/Account/Login" class="spam-a" style="margin-bottom: 15px;"><spam class="as">Login</spam></a>
@@ -56,7 +60,7 @@
             else
             {
                 <p class="spam-a2" style="margin-bottom: 15px;">@User.Identity.Name</p>
-                <a asp-area="Identity" asp-page="/Account/Logout" class="spam-a" style="margin-bottom: 15px;"><spam class="as">Logout</spam></a>
+                <a asp-area="Identity" asp-page="/Account/Logout" class="spam-a"><spam class="as">Logout</spam></a>
             }
         </nav>
     </header>

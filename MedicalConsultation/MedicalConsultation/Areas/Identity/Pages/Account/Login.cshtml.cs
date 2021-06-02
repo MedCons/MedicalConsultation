@@ -84,6 +84,8 @@ namespace MedicalConsultation.Areas.Identity.Pages.Account
                 if (result.Succeeded)
                 {
                     _logger.LogInformation("User logged in.");
+                    UserState.IsLoggedIn = true;
+                    UserState.Role = (byte)_userManager.Users.FirstOrDefault(u => u.Email == Input.Email).Role;
                     return LocalRedirect(returnUrl);
                 }
                 if (result.RequiresTwoFactor)
