@@ -19,18 +19,28 @@ namespace MedicalConsultation.Admin.Controllers
         }
 
         // GET: Message
-        public IActionResult Index(string searchString)
+        public async Task<IActionResult> Index(string searchString, string currentFilter, int? pageNumber)
         {
-            var messages = messageRepo.GetAll();
+            var messages = (IQueryable<Message>)messageRepo.GetAll();
 
             if (UserState.IsLoggedIn && UserState.Role == 1)
             {
-                if (!String.IsNullOrEmpty(searchString))
+                if (searchString != null)
                 {
-                    messages = messageRepo.GetAll().Where(s => s.Email.Contains(searchString));
+                    pageNumber = 1;
+                }
+                else
+                {
+                    searchString = currentFilter;
                 }
 
-                return View(messages.ToList());
+                if (!String.IsNullOrEmpty(searchString))
+                {
+                    messages = (IQueryable<Message>)messageRepo.GetAll().Where(s => s.Email.Contains(searchString));
+                }
+
+                int pageSize = 3;
+                return View(await PaginatedList<Message>.CreateAsync(messages.AsNoTracking(), pageNumber ?? 1, pageSize));
             }
             else
             {
