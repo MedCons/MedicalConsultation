@@ -4,6 +4,8 @@ using Microsoft.EntityFrameworkCore;
 using MedicalConsultation.Models;
 using MedicalConsultation.Repos.Interfaces;
 using MedicalConsultation.Repos;
+using System;
+using System.Linq;
 
 namespace MedicalConsultation.Admin.Controllers
 {
@@ -17,11 +19,18 @@ namespace MedicalConsultation.Admin.Controllers
         }
 
         // GET: Message
-        public async Task<IActionResult> Index()
+        public IActionResult Index(string searchString)
         {
+            var messages = messageRepo.GetAll();
+
             if (UserState.IsLoggedIn && UserState.Role == 1)
             {
-                return View(await messageRepo.GetAllAsync());
+                if (!String.IsNullOrEmpty(searchString))
+                {
+                    messages = messageRepo.GetAll().Where(s => s.Email.Contains(searchString));
+                }
+
+                return View(messages.ToList());
             }
             else
             {

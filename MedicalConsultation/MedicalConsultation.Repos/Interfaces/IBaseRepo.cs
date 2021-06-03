@@ -8,6 +8,7 @@ namespace MedicalConsultation.Repos.Interfaces
 {
     public interface IBaseRepo<T> where T : class
     {
+        IEnumerable<T> GetAll();
         Task<IQueryable<T>> GetAllAsync();
         Task<T> GetAsync(int? id);
         Task<T> UpdateAsync(T model);

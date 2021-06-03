@@ -33,6 +33,11 @@ namespace MedicalConsultation.Repos.Implementations
 
         }
 
+        public IEnumerable<T> GetAll()
+        {
+            return _table;
+        }
+
         public async Task<IQueryable<T>> GetAllAsync()
         {
             return await Task.Run(() => _table);
