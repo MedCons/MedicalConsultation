@@ -24,8 +24,14 @@ namespace MedicalConsultation.Areas.Identity.Pages.Account
             _logger = logger;
         }
 
-        public void OnGet()
+        public async Task<ActionResult> OnGet(string returnUrl = null)
         {
+            await _signInManager.SignOutAsync();
+            _logger.LogInformation("User logged out.");
+            UserState.IsLoggedIn = false;
+            UserState.Role = 2;
+
+            return RedirectToAction(nameof(Index));
         }
 
         public async Task<IActionResult> OnPost(string returnUrl = null)
