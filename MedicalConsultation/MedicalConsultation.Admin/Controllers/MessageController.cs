@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using MedicalConsultation.Models;
 using MedicalConsultation.Repos.Interfaces;
+using MedicalConsultation.Repos;
 
 namespace MedicalConsultation.Admin.Controllers
 {
@@ -18,13 +19,27 @@ namespace MedicalConsultation.Admin.Controllers
         // GET: Message
         public async Task<IActionResult> Index()
         {
-            return View(await messageRepo.GetAllAsync());
+            if (UserState.IsLoggedIn && UserState.Role == 1)
+            {
+                return View(await messageRepo.GetAllAsync());
+            }
+            else
+            {
+                return RedirectToAction(nameof(LogInOffer));
+            }
         }
 
         // GET: Message/Create
         public IActionResult Create()
         {
-            return View();
+            if (UserState.IsLoggedIn && UserState.Role == 0)
+            {
+                return View();
+            }
+            else
+            {
+                return RedirectToAction(nameof(LogInOffer));
+            }
         }
 
         // POST: Message/Create
@@ -34,28 +49,37 @@ namespace MedicalConsultation.Admin.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,Name,Surname,Email,Description")] Message message)
         {
+
             if (ModelState.IsValid)
             {
                 await messageRepo.CreateAsync(message);
                 return RedirectToAction(nameof(MsgSent));
             }
             return View(message);
+
         }
 
         // GET: Message/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
-            if (id == null)
+            if (UserState.IsLoggedIn && UserState.Role == 0)
             {
-                return NotFound();
-            }
+                if (id == null)
+                {
+                    return NotFound();
+                }
 
-            var message = await messageRepo.GetAsync(id);
-            if (message == null)
-            {
-                return NotFound();
+                var message = await messageRepo.GetAsync(id);
+                if (message == null)
+                {
+                    return NotFound();
+                }
+                return View(message);
             }
-            return View(message);
+            else
+            {
+                return RedirectToAction(nameof(LogInOffer));
+            }
         }
 
         // POST: Message/Edit/5
@@ -95,19 +119,26 @@ namespace MedicalConsultation.Admin.Controllers
         // GET: Message/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
-            if (id == null)
+            if (UserState.IsLoggedIn && UserState.Role == 1)
             {
-                return NotFound();
+                if (id == null)
+                {
+                    return NotFound();
+                }
+
+                var message = await messageRepo.GetAsync(id);
+
+                if (message == null)
+                {
+                    return NotFound();
+                }
+
+                return View(message);
             }
-
-            var message = await messageRepo.GetAsync(id);
-
-            if (message == null)
+            else
             {
-                return NotFound();
+                return RedirectToAction(nameof(LogInOffer));
             }
-
-            return View(message);
         }
 
         // POST: Message/Delete/5
@@ -125,6 +156,11 @@ namespace MedicalConsultation.Admin.Controllers
         }
 
         public ActionResult MsgSent()
+        {
+            return View();
+        }
+
+        public ActionResult LogInOffer()
         {
             return View();
         }

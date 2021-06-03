@@ -1,4 +1,4 @@
-﻿namespace MedicalConsultation
+﻿namespace MedicalConsultation.Repos
 {
     public static class UserState
     {
