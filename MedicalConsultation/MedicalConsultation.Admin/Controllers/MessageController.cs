@@ -37,7 +37,7 @@ namespace MedicalConsultation.Admin.Controllers
             if (ModelState.IsValid)
             {
                 await messageRepo.CreateAsync(message);
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(MsgSent));
             }
             return View(message);
         }
@@ -122,6 +122,11 @@ namespace MedicalConsultation.Admin.Controllers
         private bool MessageExists(int id)
         {
             return messageRepo.GetAsync(id) != null;
+        }
+
+        public ActionResult MsgSent()
+        {
+            return View();
         }
     }
 }
