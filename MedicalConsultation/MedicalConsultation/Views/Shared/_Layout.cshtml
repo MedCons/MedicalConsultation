@@ -49,10 +49,10 @@
                         <li class="menu-li"><a asp-controller="Message" asp-action="Create" class="nav-link menu-a">MedRoom</a></li>
                         <li class="menu-li"><a asp-controller="Message" asp-action="MyMessages" class="nav-link menu-a">My Messages</a></li>
                     }
-                    @if (UserState.IsLoggedIn)
+                    @*@if (UserState.IsLoggedIn)
                     {
                         <li class="menu-li"><a href="medcontact.html" class="nav-link menu-a">Contact</a></li>
-                    }
+                    }*@
                     @if (UserState.Role == 1)
                     {
                         <li class="menu-li"><a asp-controller="Message" asp-action="Index" class="nav-link menu-a">Messages</a></li>

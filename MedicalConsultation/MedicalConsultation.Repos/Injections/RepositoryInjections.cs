@@ -8,6 +8,7 @@ namespace Microsoft.Extensions.DependencyInjection
         public static void AddDepencyInjections(this IServiceCollection services)
         {
             services.AddTransient<IMessageRepo, MessageRepo>();
+            services.AddTransient<IContactRepo, ContactRepo>();
         }
     }
 }
