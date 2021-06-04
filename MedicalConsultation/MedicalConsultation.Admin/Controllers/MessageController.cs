@@ -6,6 +6,7 @@ using MedicalConsultation.Repos.Interfaces;
 using MedicalConsultation.Repos;
 using System;
 using System.Linq;
+using System.Collections.Generic;
 
 namespace MedicalConsultation.Admin.Controllers
 {
@@ -130,7 +131,7 @@ namespace MedicalConsultation.Admin.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(MyMessages));
             }
             return View(message);
         }
@@ -138,7 +139,7 @@ namespace MedicalConsultation.Admin.Controllers
         // GET: Message/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
-            if (UserState.IsLoggedIn && UserState.Role == 1)
+            if (UserState.IsLoggedIn)
             {
                 if (id == null)
                 {
@@ -166,7 +167,12 @@ namespace MedicalConsultation.Admin.Controllers
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             await messageRepo.DeleteAsync(id);
-            return RedirectToAction(nameof(Index));
+            return RedirectToAction(nameof(Deleted));
+        }
+
+        public ActionResult Deleted()
+        {
+            return View();
         }
 
         private bool MessageExists(int id)
@@ -177,6 +183,23 @@ namespace MedicalConsultation.Admin.Controllers
         public ActionResult MsgSent()
         {
             return View();
+        }
+
+        public ActionResult MyMessages()
+        {
+            if (UserState.IsLoggedIn && UserState.Role == 0)
+            {
+                var messages = messageRepo
+                    .GetAll()
+                    .Where(m => m.Email == User.Identity.Name)
+                    .ToList();
+
+                return View(messages);
+            }
+            else
+            {
+                return RedirectToAction(nameof(LogInOffer));
+            }
         }
 
         public ActionResult LogInOffer()
