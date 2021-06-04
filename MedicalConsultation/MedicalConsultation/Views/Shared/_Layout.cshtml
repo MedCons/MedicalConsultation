@@ -63,12 +63,12 @@
 
             @if (!UserState.IsLoggedIn)
             {
-                <a asp-area="Identity" asp-page="/Account/Register" class="spam-a" style="margin-bottom: 15px;"><spam class="as">Registration</spam></a>
-                <a asp-area="Identity" asp-page="/Account/Login" class="spam-a" style="margin-bottom: 15px;"><spam class="as">Login</spam></a>
+                <a asp-area="Identity" asp-page="/Account/Register" class="spam-a"><spam class="as">Registration</spam></a>
+                <a asp-area="Identity" asp-page="/Account/Login" class="spam-a"><spam class="as">Login</spam></a>
             }
             else
             {
-                <p class="spam-a2" style="margin-bottom: 15px;">@User.Identity.Name</p>
+                <p class="spam-a2">@User.Identity.Name</p>
                 <a asp-area="Identity" asp-page="/Account/Logout" class="spam-a"><spam class="as">Logout</spam></a>
             }
         </nav>

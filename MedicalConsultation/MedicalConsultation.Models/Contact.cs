@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Text;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace MedicalConsultation.Models
 {
-    public class Message
+    public class Contact
     {
         [Key]
         public int Id { get; set; }
@@ -20,6 +17,6 @@ namespace MedicalConsultation.Models
         public string Email { get; set; }
 
         [Required]
-        public string Description { get; set; }
+        public string Message { get; set; }
     }
 }

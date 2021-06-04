@@ -13,4 +13,5 @@ using MedicalConsultation.Models;
         }
 
         public DbSet<Message> Message { get; set; }
-    }
+        public DbSet<Contact> Contact { get; set; }
+}

@@ -37,7 +37,7 @@ namespace MedicalConsultation.Admin.Controllers
 
                 if (!String.IsNullOrEmpty(searchString))
                 {
-                    messages = (IQueryable<Message>)messageRepo.GetAll().Where(s => s.Email.Contains(searchString));
+                    messages = messages.Where(s => s.Email.Contains(searchString));
                 }
 
                 int pageSize = 3;
@@ -185,16 +185,17 @@ namespace MedicalConsultation.Admin.Controllers
             return View();
         }
 
-        public ActionResult MyMessages()
+        public async Task<ActionResult> MyMessages(int? pageNumber)
         {
+            var messages = (IQueryable<Message>)messageRepo.GetAll();
+
             if (UserState.IsLoggedIn && UserState.Role == 0)
             {
-                var messages = messageRepo
-                    .GetAll()
-                    .Where(m => m.Email == User.Identity.Name)
-                    .ToList();
+                messages = messages
+                    .Where(m => m.Email == User.Identity.Name);
 
-                return View(messages);
+                int pageSize = 3;
+                return View(await PaginatedList<Message>.CreateAsync(messages.AsNoTracking(), pageNumber ?? 1, pageSize));
             }
             else
             {
